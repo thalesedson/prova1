@@ -1,12 +1,13 @@
 <html>
     <head>
-        <title>Quem não cola não sai da escola</title>
+        <title>Cola na escola</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/estilo.css" rel="stylesheet" type="text/css"/>
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/bootstrap-notify.min.js" type="text/javascript"></script>
         <script src="js/jquery.validate.min.js" type="text/javascript"></script>		
         <script src="js/additional-methods.min.js" type="text/javascript"></script>		
         <script src="js/jquery.mask.min.js" type="text/javascript"></script>
@@ -41,7 +42,7 @@
                         }
                     },
                     submitHandler: function (form) {
-                        alert("Sucessoooooooooo")
+                        alert("Cadastrado com sucesso")
                     }
                 })
             })
@@ -62,27 +63,27 @@
             <form name="formCadastro" id="formCadastro" method="post">
                 <div class="row">
                     <label>Nome</label>
-                    <input type="text" name="nome" id="nome" placeholder="Nome" class="form-control"/>
+                    <input type="text" name="nome" id="nome" style= "width:75%" placeholder="Nome" class="form-control"/>
                 </div>
                 <div class="row">
                     <label>E-mail</label>
-                    <input type="email" name="email" id="email" placeholder=E-mail class="form-control"/>
+                    <input type="email" name="email" id="email" placeholder=E-mail style= "width:75%" class="form-control"/>
                 </div>	
                 <div class="row">
                     <label>CPF</label>
-                    <input type="text" name="cpf" id="cpf"  placeholder="000.000.000-00" class="form-control"/>
+                    <input type="text" name="cpf" id="cpf" style= "width:30%" placeholder="000.000.000-00" class="form-control"/>
                 </div>
                 <div class="row">
                     <label>Data de nacimento</label>
-                    <input type="date" name="datanacimento" id="datanacimento" class="form-control"/>
+                    <input type="date" name="datanacimento" style= "width:30%" id="datanacimento" class="form-control"/>
                 </div>
                 <div class="row">
                     <label>Nome da professora</label>
-                    <input type="text" name="veia" id="veia" placeholder="Nome da professora"class="form-control"/>
+                    <input type="text" name="veia" id="veia" style= "width:75%" placeholder="Nome da professora"class="form-control"/>
                 </div>
                 <div class="row">
-                    <input type="submit" name="enviar" id="enviar" class="btn btn-primary form-control"/>
-                </div>
+                   <input type="submit" name="enviar" style= "width:30%" id="enviar"  class="btn btn-primary form-control">
+	</div>
             </form>
         </div>
         
