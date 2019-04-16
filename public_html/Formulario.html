@@ -14,6 +14,18 @@
         <script src="js/messages_pt_BR.js" type="text/javascript"></script>       
       
         <script type="text/javascript">
+jQuery.validator.addMethod("anoAntigo",
+            function(value,element){
+                var data = value.split("/")
+                var ano = parseInt(data[2]) //terceira posição da data
+                var dataAtual = new Date()
+                var anoAtual = dataAtual.getFullYear()
+                if (ano < anoAtual){
+                    return true
+                }else{
+                    return false
+                }
+            },"Ano tem que ser antigo")
 
             jQuery.validator.addMethod("veianome", function (value, element) {
                 if (value.indexOf("veia") >= 0) {
@@ -24,9 +36,15 @@
             }, "Tem que ter veia no nome")
 
             $(document).ready(function () {
+                 $("#datanacimento").mask("00/00/0000")
                 $("#cpf").mask("000.000.000-00")
                 $("#formCadastro").validate({
                     rules: {
+                        datanacimento: {
+                            dateITA: true,
+                            required: true,
+                            anoAntigo: true
+                        },
                         nome: {
                             required: true,
                             maxlength: 100,
@@ -38,11 +56,40 @@
                             email: true
                         },
                         veia: {
+                            required: true,
                             veianome: true
+                        },
+                        cpf:{
+                            required: true,
+                             cpfBR: true,
+                            
                         }
+                        
                     },
+                   messages:{
+                       nome:
+                               {
+                                   required:"Nome completo por favor."
+                               },
+                      email:
+                               {
+                                   required:"Email não é valido."
+                               },
+                               cpf:{
+                            required: "Adicione um CPF valido"
+                               
+                        },
+                        datanacimento:{
+                             required: "É obrigatorio adicionar a data de nacimento"
+                        },
+                        veia:{
+                            required: "É obrigatorio adicionar o nome da professora com veia "
+                        },
+                               
+                       
+                   },
                     submitHandler: function (form) {
-                        alert("Cadastrado com sucesso")
+                        $.notify("Cadastrado com sucesso", "success");
                     }
                 })
             })
@@ -75,7 +122,7 @@
                 </div>
                 <div class="row">
                     <label>Data de nacimento</label>
-                    <input type="date" name="datanacimento" style= "width:30%" id="datanacimento" class="form-control"/>
+                    <input type="text" name="datanacimento" style= "width:30%" placeholder="00/00/0000 "id="datanacimento" class="form-control"/>
                 </div>
                 <div class="row">
                     <label>Nome da professora</label>
